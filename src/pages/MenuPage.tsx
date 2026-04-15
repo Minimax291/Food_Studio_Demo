@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { menuItems } from "../data/menuData";
+import { useCart } from "../context/CartContext";
 import "./MenuPage.css";
 
 export default function MenuPage() {
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+  const { addToCart } = useCart();
 
   const handleIncrease = (id: number) => {
     setQuantities((prev) => ({
@@ -17,6 +19,11 @@ export default function MenuPage() {
       ...prev,
       [id]: Math.max((prev[id] || 1) - 1, 1),
     }));
+  };
+
+  const handleAddToCart = (id: number) => {
+    const quantity = quantities[id] || 1;
+    addToCart(id, quantity);
   };
 
   return (
@@ -43,7 +50,12 @@ export default function MenuPage() {
               <button onClick={() => handleIncrease(item.id)}>+</button>
             </div>
 
-            <button className="add-to-cart-btn">Add to Cart</button>
+            <button
+              className="add-to-cart-btn"
+              onClick={() => handleAddToCart(item.id)}
+            >
+              Add to Cart
+            </button>
           </div>
         ))}
       </div>
