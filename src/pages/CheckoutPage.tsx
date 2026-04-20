@@ -3,13 +3,14 @@ import { useCart } from "../context/CartContext";
 import "./CheckoutPage.css";
 
 export default function CheckoutPage() {
-  const { cartItems, getTotalPrice } = useCart();
+  const { cartItems, getTotalPrice, clearCart } = useCart();
   const navigate = useNavigate();
 
   const deliveryFee = cartItems.length > 0 ? 2.5 : 0;
   const finalTotal = getTotalPrice() + deliveryFee;
 
   const handlePlaceOrder = () => {
+    clearCart();
     navigate("/order-success");
   };
 
