@@ -18,6 +18,7 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .navbar-links a {
@@ -30,8 +31,9 @@
   color: #ff5722;
 }
 
-.login-btn {
-  padding: 6px 12px;
+.login-btn,
+.logout-btn {
+  padding: 8px 14px;
   border: none;
   background-color: #ff5722;
   color: white;
@@ -39,6 +41,18 @@
   cursor: pointer;
 }
 
-.login-btn:hover {
+.login-btn:hover,
+.logout-btn:hover {
   background-color: #e64a19;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.welcome-text {
+  font-weight: 600;
+  color: #333;
 }
