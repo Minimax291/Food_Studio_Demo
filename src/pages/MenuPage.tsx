@@ -5,7 +5,25 @@ import "./MenuPage.css";
 
 export default function MenuPage() {
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const { addToCart } = useCart();
+
+  const categories = [
+    "All",
+    "Biryani",
+    "Curries",
+    "Wraps",
+    "Sides",
+    "Street Food",
+    "Deals",
+    "Drinks",
+  ];
+
+  const filteredItems =
+    selectedCategory === "All"
+      ? menuItems
+      : menuItems.filter((item) => item.category === selectedCategory);
 
   const handleIncrease = (id: number) => {
     setQuantities((prev) => ({
@@ -31,13 +49,29 @@ export default function MenuPage() {
       <div className="menu-header">
         <h1>Our Menu</h1>
         <p>
-          Explore our British-Indian fusion favorites, from curries and biryanis
+          Explore our British-Indian fusion favourites, from curries and biryanis
           to wraps, street food, deals, and drinks.
         </p>
       </div>
 
+      <div className="category-filter">
+        {categories.map((category) => (
+          <button
+            key={category}
+            className={
+              selectedCategory === category
+                ? "category-btn active-category"
+                : "category-btn"
+            }
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
       <div className="menu-grid">
-        {menuItems.map((item) => (
+        {filteredItems.map((item) => (
           <div className="menu-card" key={item.id}>
             <span className="menu-category">{item.category}</span>
             <h2>{item.name}</h2>

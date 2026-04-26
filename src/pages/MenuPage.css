@@ -92,3 +92,35 @@
 .add-to-cart-btn:hover {
   background-color: #e64a19;
 }
+
+.category-filter {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-btn {
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.category-btn:hover {
+  border-color: #ff5722;
+  color: #ff5722;
+}
+
+.active-category {
+  background-color: #ff5722;
+  color: white;
+  border-color: #ff5722;
+}
+
+.active-category:hover {
+  color: white;
+}
