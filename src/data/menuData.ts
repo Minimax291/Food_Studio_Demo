@@ -23,7 +23,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: 3,
-    name: "Chicken Balti",
+    name: "Chicken Curry",
     description: "A rich curry served with bold spices and deep flavor.",
     price: 6.49,
     category: "Curries",
